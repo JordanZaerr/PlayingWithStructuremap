@@ -1,0 +1,20 @@
+S 6485 Baker      John      1996.December.14 1500.00        
+S 2177 Grimes     Kerri             2/9/2001 1500.00       
+S 0361 Peterson   Paul              6-3-2000 1500.00       
+H 2497 Allen      Cindy         Sept,15,1985 21.50 43.0
+H 0090 Baldwin    Cindy            7-23-2002 14.30 40.0        
+H 8835 Freeman    Sally            8.30.1998 19.75 38.0
+H 4369 Garfield   James            4.21.1999 12.63 44.5       
+H 3278 Harris     Joan              5.6.1992  15.80 41.5         
+H 0868 Harris     John            11.11.2003 18.75 40.0      
+H 9638 Masters    Kenneth           3.7.2004  17.25 40.0       
+C 7506 Allen      Sarah           Jan,2,2000 300.00 2.00 400     
+C 8563 Baker      John           Dec,14,1996 275.00 2.25 535        
+C 2157 Carson     Robert         Jun,18,1993 300.00 2.00 440
+C 0012 Lawson     LeAnn           1-Aug-1994 275.00 2.25 489
+C 5647 Patterson  Roseanne   17-January-1995 300.00 2.00 358        
+C 2972 Randall    Michael        10-Feb-1993 275.00 2.25 457
+P 8102 Adams      Paul            5.Mar.1990 85.00 12
+P 0462 Mason      Debbie        July,27,1998 85.00 14        
+P 6603 Rogers     Sherry           3.31.2000 85.00 11
+P 5021 Shepard    Steven            8-5-1997 85.00 15

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A717966A-C046-42BD-A580-052B772195BD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StructureMapExample</RootNamespace>
+    <AssemblyName>StructureMapExample</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4">
+      <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Reporting\Reports\AllEmployeesEarningsOrder.cs" />
+    <Compile Include="Reporting\Reports\AllEmployeesHireDateOrder.cs" />
+    <Compile Include="Reporting\Reports\AllEmployeesIdOrder.cs" />
+    <Compile Include="Reporting\Reports\AllEmployeesNameOrder.cs" />
+    <Compile Include="Reporting\Reports\AllEmployeesTypeOrder.cs" />
+    <Compile Include="Reporting\Reports\CommissionNameOrder.cs" />
+    <Compile Include="Reporting\Reports\HourlyNameOrder.cs" />
+    <Compile Include="Reporting\Reports\IReport.cs" />
+    <Compile Include="Reporting\Reports\PieceNameOrder.cs" />
+    <Compile Include="Reporting\Reports\SupervisorsNameOrder.cs" />
+    <Compile Include="Utils\DateParser.cs" />
+    <Compile Include="EmployeeFactory\IEmployeeFactory.cs" />
+    <Compile Include="EmployeeTypes\Commission.cs" />
+    <Compile Include="EmployeeFactory\EmployeeFactory.cs" />
+    <Compile Include="EmployeeFactory\EmployeeType.cs" />
+    <Compile Include="EmployeeFactory\CommissionStrategy.cs" />
+    <Compile Include="Utils\Extensions.cs" />
+    <Compile Include="FileManagement\FileWriter.cs" />
+    <Compile Include="FileManagement\IFileWriter.cs" />
+    <Compile Include="Utils\IDateParser.cs" />
+    <Compile Include="Reporting\IReportModule.cs" />
+    <Compile Include="FileManagement\DelimitedFileReader.cs" />
+    <Compile Include="EmployeeFactory\HourlyStrategy.cs" />
+    <Compile Include="EmployeeFactory\IEmployeeTypeStrategy.cs" />
+    <Compile Include="EmployeeFactory\PieceStrategy.cs" />
+    <Compile Include="EmployeeFactory\SupervisorStrategy.cs" />
+    <Compile Include="FileManagement\IFileReader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="EmployeeTypes\Employee.cs" />
+    <Compile Include="EmployeeTypes\Hourly.cs" />
+    <Compile Include="Reporting\ReportModule.cs" />
+    <Compile Include="Reporting\IReportGenerator.cs" />
+    <Compile Include="Reporting\IReportOrganizer.cs" />
+    <Compile Include="Reporting\ReportGenerator.cs" />
+    <Compile Include="Reporting\ReportOrganizer.cs" />
+    <Compile Include="StructureMapRegistry.cs" />
+    <Compile Include="EmployeeTypes\Piece.cs" />
+    <Compile Include="EmployeeTypes\Supervisor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EmployeeData.Txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
