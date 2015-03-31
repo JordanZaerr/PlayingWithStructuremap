@@ -2,7 +2,7 @@
 using StructureMapExample.EmployeeTypes;
 using StructureMapExample.Utils;
 
-namespace StructureMapExample.EmployeeFactory
+namespace StructureMapExample.EmployeeStrategy
 {
     public class CommissionStrategy : IEmployeeTypeStrategy
     {
@@ -18,7 +18,7 @@ namespace StructureMapExample.EmployeeFactory
             return values[0] == EmployeeType.Commission;
         }
 
-        public Employee CreateEmployee(string[] values)
+        public EmployeeTypes.Employee CreateEmployee(string[] values)
         {
             return new Commission 
             {

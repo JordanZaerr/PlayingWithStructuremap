@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using StructureMapExample.EmployeeFactory;
+using StructureMapExample.EmployeeStrategy;
 using StructureMapExample.EmployeeTypes;
 using StructureMapExample.FileManagement;
 
@@ -23,12 +23,12 @@ namespace StructureMapExample.Reporting
 
         public void BuildReports(string inputPath, string outputPath)
         {
-            IEnumerable<string[]> parsedValues = _reader.ParseFile(inputPath);
+            IEnumerable<string[]> parsedValues = _reader.ParseFile(inputPath).ToList();
 
             IEnumerable<Employee> employees = parsedValues
-                .Select(x => _employeeFactory.GetEmployee(x));
+                .Select(x => _employeeFactory.GetEmployee(x)).ToList();
 
-            IEnumerable<string> reports = _reportOrganizer.OrganizeReports(employees);
+            IEnumerable<string> reports = _reportOrganizer.OrganizeReports(employees).ToList();
 
             _writer.WriteFile(outputPath, reports);
         }

@@ -1,4 +1,4 @@
-﻿namespace StructureMapExample.EmployeeFactory
+﻿namespace StructureMapExample.EmployeeStrategy
 {
     public static class EmployeeType
     {

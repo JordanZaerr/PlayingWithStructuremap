@@ -26,10 +26,10 @@ namespace StructureMapExample.Tests
         }
 
         [TestMethod]
-        public void UsesInMemoryProfileImplementations()
+        public void UsesAlternateProfileImplementations()
         {
-            var childContainer = _container.GetProfile(ProfileType.InMemory);
-            childContainer.GetInstance<IService>().ShouldBeOfType<InMemoryService>();
+            var childContainer = _container.GetProfile(ProfileType.Alternate);
+            childContainer.GetInstance<IService>().ShouldBeOfType<DisposableService>();
             childContainer.GetInstance<IModule>().ShouldBeOfType<ModuleB>();
         }
     }
@@ -38,16 +38,16 @@ namespace StructureMapExample.Tests
     {
         public TestRegistry()
         {
-            this.Profile(ProfileType.Actual,
+            Profile(ProfileType.Actual,
                 x =>
                 {
                     x.For<IService>().Use<Service>();
                     x.For<IModule>().Use<ModuleA>();
                 });
-            this.Profile(ProfileType.InMemory,
+            Profile(ProfileType.Alternate,
                 x =>
                 {
-                    x.For<IService>().Use<InMemoryService>();
+                    x.For<IService>().Use<DisposableService>();
                     x.For<IModule>().Use<ModuleB>();
                 });
         }
@@ -56,6 +56,7 @@ namespace StructureMapExample.Tests
     public static class ProfileType
     {
         public const string Actual = "Actual";
-        public const string InMemory = "InMemory";
+        public const string Alternate = "Alternate";
+        public const string Debug = "Debug";
     }
 }

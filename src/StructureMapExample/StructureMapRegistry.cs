@@ -1,5 +1,5 @@
 ﻿using StructureMap.Configuration.DSL;
-using StructureMapExample.EmployeeFactory;
+using StructureMapExample.EmployeeStrategy;
 using StructureMapExample.FileManagement;
 using StructureMapExample.Reporting;
 using StructureMapExample.Reporting.Reports;
@@ -45,7 +45,7 @@ namespace StructureMapExample
             For<IEmployeeTypeStrategy>().Use<PieceStrategy>();
             For<IEmployeeTypeStrategy>().Use<SupervisorStrategy>();
 
-            For<IEmployeeFactory>().Use<EmployeeFactory.EmployeeFactory>().Singleton();
+            For<IEmployeeFactory>().Use<EmployeeFactory>().Singleton();
         }
     }
 }

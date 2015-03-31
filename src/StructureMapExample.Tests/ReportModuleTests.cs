@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using StructureMap.AutoMocking.Moq;
-using StructureMapExample.EmployeeFactory;
+using StructureMapExample.EmployeeStrategy;
 using StructureMapExample.EmployeeTypes;
 using StructureMapExample.FileManagement;
 using StructureMapExample.Reporting;
@@ -39,7 +39,7 @@ namespace StructureMapExample.Tests
 
              GetMock<IReportOrganizer>().Setup(x =>
                 x.OrganizeReports(It.IsAny<IEnumerable<Employee>>()))
-                .Callback<IEnumerable<Employee>>(x => x.ToList());
+                .Returns(new []{""});
 
             _target.BuildReports("In","Out");
             GetMock<IEmployeeFactory>()
@@ -85,10 +85,7 @@ namespace StructureMapExample.Tests
         private void SetupFileReaderReturn()
         {
             GetMock<IFileReader>().Setup(x => x.ParseFile(It.IsAny<string>()))
-                .Returns(new List<string[]>
-                {
-                    new []{""}
-                });
+                .Returns(new List<string[]> { new []{""} });
         }
 
         private void SetupGetEmployeeReturn()
@@ -100,10 +97,7 @@ namespace StructureMapExample.Tests
         private void SetupOrganizeReportsReturn()
         {
             GetMock<IReportOrganizer>().Setup(x => x.OrganizeReports(It.IsAny<IEnumerable<Employee>>()))
-                .Returns(new List<string>
-                {
-                    ""
-                });
+                .Returns(new List<string> { "" });
         }
 
         private Mock<T> GetMock<T>() where T: class

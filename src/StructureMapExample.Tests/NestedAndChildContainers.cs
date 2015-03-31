@@ -49,15 +49,20 @@ namespace StructureMapExample.Tests
         [TestMethod]
         public void DisposeInNormal()
         {
-            var instance = _container.GetInstance<IService>();
-            var disposeable = instance as DisposableService;
+            _container.Configure(x => x.ForSingletonOf<IModule>().Use<DisposableModule>());
+            var disposableService = _container.GetInstance<IService>() as DisposableService;
+            var disposableModule = _container.GetInstance<IModule>() as DisposableModule;
             
-            disposeable.ShouldNotBe(null);
-            disposeable.IsDisposed.ShouldBe(false);
+            disposableService.ShouldNotBe(null);
+            disposableModule.ShouldNotBe(null);
+
+            disposableService.IsDisposed.ShouldBe(false);
+            disposableModule.IsDisposed.ShouldBe(false);
 
             _container.Dispose();
 
-            disposeable.IsDisposed.ShouldBe(false);
+            disposableService.IsDisposed.ShouldBe(false);
+            disposableModule.IsDisposed.ShouldBe(true);
         }
 
         [TestMethod]
@@ -128,6 +133,28 @@ namespace StructureMapExample.Tests
 
             parentService.IsDisposed.ShouldBe(false);
             nestedService.IsDisposed.ShouldBe(false);
+        }
+
+        [TestMethod]
+        public void ChildContainerDoesNotDisposeSingletonFromParent()
+        {
+            var container = new Container();
+            container.Configure(x => x.ForSingletonOf<IService>().Use<DisposableService>());
+
+            var childContainer = container.CreateChildContainer();
+
+            var parentService = (DisposableService)container.GetInstance<IService>();
+            var childService = (DisposableService)childContainer.GetInstance<IService>();
+
+            parentService.ShouldBeSameAs(childService);
+
+            parentService.IsDisposed.ShouldBe(false);
+            childService.IsDisposed.ShouldBe(false);
+
+            childContainer.Dispose();
+
+            parentService.IsDisposed.ShouldBe(false);
+            childService.IsDisposed.ShouldBe(false);
         }
     }
 }

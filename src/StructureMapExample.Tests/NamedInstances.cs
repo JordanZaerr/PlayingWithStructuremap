@@ -16,8 +16,8 @@ namespace StructureMapExample.Tests
             _container = new Container();
             _container.Configure(x =>
             {
-                x.For<IModule>().Add<ModuleA>().Named("A");
-                x.For<IModule>().Add<ModuleB>().Named("B");
+                x.For<IModule>().Use<ModuleA>().Named("A");
+                x.For<IModule>().Use<ModuleB>().Named("B");
                 x.For<IModule>().Use<ModuleC>().Named("C");
             });
         }
@@ -37,7 +37,7 @@ namespace StructureMapExample.Tests
         [TestMethod]
         public void SetsDefaultToAnotherModule()
         {
-            _container.Configure(x => x.For(typeof (IModule)).Use("A"));
+            _container.Configure(x => x.For<IModule>().Use("A"));
             _container.GetInstance<IModule>().ShouldBeOfType<ModuleA>();
         }
     }

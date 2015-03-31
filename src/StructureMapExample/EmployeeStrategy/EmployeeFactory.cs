@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using StructureMapExample.EmployeeTypes;
 
-namespace StructureMapExample.EmployeeFactory
+namespace StructureMapExample.EmployeeStrategy
 {
     public class EmployeeFactory : IEmployeeFactory
     {
@@ -13,7 +12,7 @@ namespace StructureMapExample.EmployeeFactory
             _strategies = strategies;
         }
 
-        public Employee GetEmployee(string[] values)
+        public EmployeeTypes.Employee GetEmployee(string[] values)
         {
             return _strategies.First(x => x.IsMatch(values)).CreateEmployee(values);
         }

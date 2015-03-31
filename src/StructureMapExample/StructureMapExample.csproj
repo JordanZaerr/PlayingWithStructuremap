@@ -40,7 +40,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,21 +58,21 @@
     <Compile Include="Reporting\Reports\PieceNameOrder.cs" />
     <Compile Include="Reporting\Reports\SupervisorsNameOrder.cs" />
     <Compile Include="Utils\DateParser.cs" />
-    <Compile Include="EmployeeFactory\IEmployeeFactory.cs" />
+    <Compile Include="EmployeeStrategy\IEmployeeFactory.cs" />
     <Compile Include="EmployeeTypes\Commission.cs" />
-    <Compile Include="EmployeeFactory\EmployeeFactory.cs" />
-    <Compile Include="EmployeeFactory\EmployeeType.cs" />
-    <Compile Include="EmployeeFactory\CommissionStrategy.cs" />
+    <Compile Include="EmployeeStrategy\EmployeeFactory.cs" />
+    <Compile Include="EmployeeStrategy\EmployeeType.cs" />
+    <Compile Include="EmployeeStrategy\CommissionStrategy.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="FileManagement\FileWriter.cs" />
     <Compile Include="FileManagement\IFileWriter.cs" />
     <Compile Include="Utils\IDateParser.cs" />
     <Compile Include="Reporting\IReportModule.cs" />
     <Compile Include="FileManagement\DelimitedFileReader.cs" />
-    <Compile Include="EmployeeFactory\HourlyStrategy.cs" />
-    <Compile Include="EmployeeFactory\IEmployeeTypeStrategy.cs" />
-    <Compile Include="EmployeeFactory\PieceStrategy.cs" />
-    <Compile Include="EmployeeFactory\SupervisorStrategy.cs" />
+    <Compile Include="EmployeeStrategy\HourlyStrategy.cs" />
+    <Compile Include="EmployeeStrategy\IEmployeeTypeStrategy.cs" />
+    <Compile Include="EmployeeStrategy\PieceStrategy.cs" />
+    <Compile Include="EmployeeStrategy\SupervisorStrategy.cs" />
     <Compile Include="FileManagement\IFileReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

@@ -19,9 +19,9 @@ namespace StructureMapExample.Tests
         {
             _container.Configure(x =>
             {
-                x.For<IModule>().Use<ModuleA>();
-                x.For<IModule>().Use<ModuleB>();
-                x.For<IModule>().Use<ModuleC>();
+                x.For<IModule>().Add<ModuleA>();
+                x.For<IModule>().Add<ModuleB>();
+                x.For<IModule>().Add<ModuleC>();
             });
         }
 
@@ -78,17 +78,7 @@ namespace StructureMapExample.Tests
         {
             var instance = _container.GetInstance<SuperLazy>();
             instance.Func.ShouldNotBe(null);
-            instance.Func().Value.Length.ShouldBe(3);
-        }
-    }
-
-    public class SuperLazy
-    {
-        public Func<Lazy<IModule[]>> Func { get; set; }
-
-        public SuperLazy(Func<Lazy<IModule[]>> func)
-        {
-            Func = func;
+            instance.Func().Value.Value().Value.Length.ShouldBe(3);
         }
     }
 
@@ -143,6 +133,16 @@ namespace StructureMapExample.Tests
         public LazyEnumerableClass(Lazy<IEnumerable<IModule>> lazyEnumerable)
         {
             Collection = lazyEnumerable;
+        }
+    }
+
+    public class SuperLazy
+    {
+        public Func<Lazy<Lazy<Func<Lazy<IModule[]>>>>> Func { get; set; }
+
+        public SuperLazy(Func<Lazy<Lazy<Func<Lazy<IModule[]>>>>> func)
+        {
+            Func = func;
         }
     }
 }

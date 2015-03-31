@@ -35,9 +35,8 @@ namespace StructureMapExample.Tests
         [TestMethod]
         public void ReportInstanceBuildPlan()
         {
-//            This fails since there isn't a default instance for IReport
-//            var buildPlan = _container.Model.For<IReport>().Default.DescribeBuildPlan(100);
-
+            //This fails since there isn't a default instance for IReport
+            //var buildPlan = _container.Model.For<IReport>().Default.DescribeBuildPlan(100);
             var buildPlan = String.Join(Environment.NewLine, _container.Model.For<IReport>()
                 .Instances.Select(x => x.DescribeBuildPlan(100)));
 

@@ -57,13 +57,13 @@ namespace StructureMapExample.Tests
         }
 
         [TestMethod]
-        public void TransientIsDifferentWithinSingleResolveCallFromNestedContainer()
+        public void TransientIsUniqueWithinSingleResolveCallFromNestedContainer()
         {
             _container.Configure(x => x.For<IService>().Use<Service>().AlwaysUnique());
             var nested = _container.GetNestedContainer();
-            var instance = nested.GetInstance<Parent>();
+            var parent = nested.GetInstance<Parent>();
 
-            instance.Service.ShouldNotBeSameAs(instance.Child.Service);
+            parent.Service.ShouldNotBeSameAs(parent.Child.Service);
         }
     }
 

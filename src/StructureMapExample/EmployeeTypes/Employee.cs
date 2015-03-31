@@ -1,5 +1,4 @@
 using System;
-using System.Windows.Forms;
 
 namespace StructureMapExample.EmployeeTypes
 {
@@ -64,20 +63,12 @@ namespace StructureMapExample.EmployeeTypes
             if (value >= min && value <= max)
                 setter(value);
             else
-                ProcessError(String.Format("{0} can not be assigned to the {1} property\n\nAbort?", value, propertyName));
+                Console.WriteLine("{0} can not be assigned to the {1} property", value, propertyName);
         }
 
-        private void ProcessError(string message)
+        public override string ToString()
         {
-            DialogResult result = MessageBox.Show(message,
-                "Error",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Error,
-                MessageBoxDefaultButton.Button1);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
+            return String.Format("Name: {0} {1}, EmployeeType: {2}, Pay: ${3}", FirstName, LastName, this.GetType().Name, NetPay);
         }
     }
 }

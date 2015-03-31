@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ImpromptuInterface">
+      <HintPath>..\packages\ImpromptuInterface.6.2.2\lib\net40\ImpromptuInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
@@ -74,6 +78,9 @@
     <Compile Include="DebugTests.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="LifeCycles.cs" />
+    <Compile Include="ProfilesPassThrough.cs" />
+    <Compile Include="Tracing\LogWrapper.cs" />
+    <Compile Include="ProfilesExample.cs" />
     <Compile Include="ReportModuleTests.cs" />
     <Compile Include="NamedInstances.cs" />
     <Compile Include="NestedAndChildContainers.cs" />
@@ -89,6 +96,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\StructureMapExample\EmployeeData.Txt">
+      <Link>EmployeeData.Txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -2,11 +2,15 @@
 
 namespace StructureMapExample.Tests.Data
 {
-    public interface IService { }
+    public interface IService
+    {
+        void DoSomething(string someArgument, int anotherArgument);
+    }
 
-    public class Service : IService { }
-
-    public class InMemoryService : IService { }
+    public class Service : IService 
+    {
+        public void DoSomething(string someArgument, int anotherArgument){}
+    }
 
     public class DisposableService : IService, IDisposable{
         public bool IsDisposed { get; set; }
@@ -14,5 +18,7 @@ namespace StructureMapExample.Tests.Data
         {
             IsDisposed = true;
         }
+
+        public void DoSomething(string someArgument, int anotherArgument){}
     }
 }
